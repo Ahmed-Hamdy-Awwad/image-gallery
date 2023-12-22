@@ -1,6 +1,6 @@
 #include "list.h"
 #include <iostream>
-#include "Image.hpp"
+#include "Image.h"
 using namespace std;
 
 void draw_image(int);
