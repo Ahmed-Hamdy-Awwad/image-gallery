@@ -1,10 +1,10 @@
-#include "list.h"
 #include <iostream>
-#include "Image.h"
+#include "list.cpp"
+#include "Image.cpp" 
 using namespace std;
 
-void draw_image(int);
-void get_user_input(int, List &);
+// void draw_image(int);
+// void get_user_input(int, List &);
 void display_images_list(string img_numbers[10], List &);
 
 int main()
@@ -45,11 +45,11 @@ void display_images_list(string img_numbers[10], List &)
 	cout << "Please select a number from 1 to 10 ";
 }
 
-void get_user_input(int num, List &l)
-{
-	if (num > 0 && num <= 10)
-	{
-		l.add(num);
-		// draw_image(num);
-	}
-}
+// void get_user_input(int num, List &l)
+// {
+// 	if (num > 0 && num <= 10)
+// 	{
+// 		l.add(num);
+// 		// draw_image(num);
+// 	}
+// }
