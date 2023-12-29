@@ -1,4 +1,4 @@
-#include "list.h"
+#include "list.cpp"
 #include <iostream>
 #include "Image.cpp"
 using namespace std;
