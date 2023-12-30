@@ -2719,6 +2719,46 @@ public:
 		type = image_type;
 	}
 
+	void color_token(int color_no){
+		string bg;
+		switch (color_no)
+		{
+		case 0:
+			bg = "107m";
+			break;
+		case 1:
+			bg = "100m";
+			break;
+		case 2:
+			bg = "43m";
+			break;
+		case 3:
+			bg = "101m";
+			break;
+		case 4:
+			bg = "41m";
+			break;
+		case 5:
+			bg = "40m";
+			break;
+		case 6:
+			bg = "104m";
+			break;
+		case 7:
+			bg = "103m";
+			break;
+		case 8:
+			bg = "102m";
+			break;			
+		default:
+			break;
+		}
+		string open_clause = "\033[";
+		string close_clause = "\033[0m";
+		string color = open_clause + bg  + " " + close_clause;
+		cout << color;					
+	}
+
 	void display()
 	{
 		get_image();
@@ -2727,7 +2767,7 @@ public:
 			for (int j = 0; j < N; ++j)
 			{
 				if (canvas[i][j] != 0)
-					cout << canvas[i][j];
+					color_token(canvas[i][j]);
 				else
 					cout << " ";
 			}
