@@ -1,55 +1,58 @@
-#include <iostream>
 #include "list.cpp"
-#include "Image.cpp" 
+#include <iostream>
+#include "Image.cpp"
 using namespace std;
 
-// void draw_image(int);
-// void get_user_input(int, List &);
-void display_images_list(string img_numbers[10], List &);
+void draw_image(int);
+void get_user_input(int, List &, int &);
+void display_images_list(string img_numbers[10], List &, int &);
 
 int main()
 {
-	Image bee = Image("bee");
-	Image tree = Image("tree");
-	Image boat = Image("boat");
-	Image star = Image("star");
-	Image ghost = Image("ghost");
-	Image pizza = Image("pizza");
-	Image heart = Image("heart");
-	Image bunny = Image("bunny");
-	Image ice_cream = Image("ice_cream");
-	Image water_melon = Image("water_melon");
-	Image images[10] = {bee, tree, boat, star, ghost, pizza, heart, bunny, ice_cream, water_melon};
 	cout << "\nWelcome to the Image-Gallery app, you can select one of the following images and our app will draw it for you.\n";
-	string img_numbers[10] = {"Bee", "Tree", "Boat", "Star", "Ghost", "Pizza", "Heart", "Bunny", "Ice Cream", "Water Melon"};
+	string img_numbers[13] = {"Bee", "Tree", "Boat", "Star", "Ghost", "Pizza", "Heart", "Bunny", "Ice Cream", "Water Melon", "Next", "Previous", "Exit"};
 	List list = List(1);
-	display_images_list(img_numbers, list);
-	images[0].display();
-	// list.add(7);
-	// list.add(9);
-	// list.getPrev();
-	// cout << list.getPrev()->data << endl;
-	// list.add(11);
-	// cout << list.getData() << endl;
-	// list.getPrev();
-	// cout << list.getNext()->data << endl;
+	int keep_going = 1;
+	while (keep_going)
+		display_images_list(img_numbers, list, keep_going);
 	return 0;
 }
 
-void display_images_list(string img_numbers[10], List &)
+void display_images_list(string img_numbers[10], List &l, int &keep_going)
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 13; i++)
 	{
 		cout << i + 1 << ". " << img_numbers[i] << endl;
 	}
-	cout << "Please select a number from 1 to 10 ";
+	int user_input;
+	cout << "Please select a number from 1 to 13: ";
+	cin >> user_input;
+	get_user_input(user_input, l, keep_going);
 }
 
-// void get_user_input(int num, List &l)
-// {
-// 	if (num > 0 && num <= 10)
-// 	{
-// 		l.add(num);
-// 		// draw_image(num);
-// 	}
-// }
+void get_user_input(int num, List &l, int &keep_going)
+{
+	if (num > 0 && num <= 10)
+	{
+		l.add(num);
+		draw_image(num);
+	}
+	else if (num == 11)
+	{
+		draw_image(l.getNext()->data);
+	}
+	else if (num == 12)
+	{
+		draw_image(l.getPrev()->data);
+	}
+	else
+	{
+		keep_going = 0;
+	}
+}
+
+void draw_image(int num)
+{
+	Image images[10] = {Image("bee"), Image("tree"), Image("boat"), Image("star"), Image("ghost"), Image("pizza"), Image("heart"), Image("bunny"), Image("ice_cream"), Image("water_melon")};
+	images[num - 1].display();
+}

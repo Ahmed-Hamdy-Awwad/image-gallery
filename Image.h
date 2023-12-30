@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 // Colors struct
@@ -28,8 +29,10 @@ class Image
 	void bee();
 
 	void get_image();
+	
 
 public:
 	Image(string image_type);
 	void display();
+	void color_token(int color_no);
 };
